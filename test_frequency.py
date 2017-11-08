@@ -22,7 +22,7 @@ class test_frequency():
 
 
 	def main(self, thread_num):
-		print "starting thread {}".format(thread_num)
+		print("starting thread {}".format(thread_num))
 		personal_count = 0
 		while time.time() - self.start < self.time_limit:
 			path = "test_images/fish.jpg"
@@ -31,9 +31,9 @@ class test_frequency():
 				with self.global_lock:
 					self.count += 1
 				personal_count += 1
-				print "thread {} finsihed search {}".format(thread_num, personal_count)
+				print("thread {} finsihed search {}".format(thread_num, personal_count))
 		if thread_num == 0:
-			print "finished {} requests".format(self.count)
+			print("finished {} requests".format(self.count))
 
 
 
