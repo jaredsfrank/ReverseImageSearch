@@ -1,4 +1,4 @@
-from image_search import predict_from_path
+from image_search import predict_from_path, predict_from_url
 import threading
 import argparse
 import time
@@ -19,6 +19,7 @@ class test_frequency():
 		self.count = 0
 		self.start = time.time()
 		self.time_limit = time_limit
+		self.use_url = True
 
 
 	def main(self, thread_num):
@@ -26,7 +27,10 @@ class test_frequency():
 		personal_count = 0
 		while time.time() - self.start < self.time_limit:
 			path = "test_images/fish.jpg"
-			prediction = predict_from_path(path)
+			if not self.use_url:
+				prediction = predict_from_path(path)
+			else:
+				prediction = predict_from_url("http://sn.uploads.im/xdmfZ.jpg")
 			if prediction == "fish":
 				with self.global_lock:
 					self.count += 1

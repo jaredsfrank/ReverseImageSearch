@@ -28,6 +28,7 @@ import requests
 def predict_from_path(path):
     """Returns google reverse image search prediction given image path."""
     url = upload_image(path)
+    print url
     if url is None:
         return "None"
     return predict_from_url(url)
