@@ -42,9 +42,13 @@ def upload_image(path):
         curl --form "fileupload=@test.jpg" http://uploads.im/api?upload
 
     """
-    r = requests.post('http://uploads.im/api?upload',
-                  files=dict(input=open(path, 'rb')))
-    return r.json()["data"]["img_url"]
+    try:
+        r = requests.post('http://uploads.im/api?upload',
+                      files=dict(input=open(path, 'rb')))
+        return r.json()["data"]["img_url"]
+    except:
+        print "UPLOAD FAILED. Trying again"
+        return upload_image(path)
 
 
 # if __name__ == "__main__":
