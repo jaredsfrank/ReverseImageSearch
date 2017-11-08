@@ -47,7 +47,7 @@ def upload_image(path):
                       files=dict(input=open(path, 'rb')))
         return r.json()["data"]["img_url"]
     except:
-        print "UPLOAD FAILED. Trying again"
+        print("UPLOAD FAILED. Trying again")
         return upload_image(path)
 
 
