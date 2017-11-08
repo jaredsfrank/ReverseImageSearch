@@ -20,6 +20,7 @@ class test_frequency():
 		self.start = time.time()
 		self.time_limit = time_limit
 		self.use_url = True
+		self.exiting_threads = args.num_threads
 
 
 	def main(self, thread_num):
@@ -40,7 +41,9 @@ class test_frequency():
 				print("thread {} failed".format(thread_num))
 			else:
 				print("thread {} incorrectly prediction {}".format(thread_num, prediction))
-		if thread_num == 0:
+		with self.global_lock:
+			self.exiting_threads -= 1
+		if self.exiting_threads == 0:
 			print("finished {} requests".format(self.count))
 
 
