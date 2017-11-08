@@ -18,11 +18,11 @@ import json
 import requests
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--image_path", 
-    help="Path to image query",
-    type=str)
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument("--image_path", 
+#     help="Path to image query",
+#     type=str)
+# args = parser.parse_args()
 
 
 def predict_from_path(path):
@@ -47,5 +47,5 @@ def upload_image(path):
     return r.json()["data"]["img_url"]
 
 
-if __name__ == "__main__":
-    print(predict_from_path(args.image_path))
+# if __name__ == "__main__":
+#     print(predict_from_path(args.image_path))
