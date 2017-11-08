@@ -48,7 +48,7 @@ def upload_image(path):
         return r.json()["data"]["img_url"]
     except:
         print("UPLOAD FAILED. Trying again")
-        print(r)
+        print(r.json())
         return upload_image(path)
 
 
