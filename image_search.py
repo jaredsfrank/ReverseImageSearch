@@ -28,6 +28,8 @@ import requests
 def predict_from_path(path):
     """Returns google reverse image search prediction given image path."""
     url = upload_image(path)
+    if url is None:
+        return "None"
     return predict_from_url(url)
 
 def predict_from_url(url):
@@ -47,9 +49,9 @@ def upload_image(path):
                       files=dict(input=open(path, 'rb')))
         return r.json()["data"]["img_url"]
     except:
-        print("UPLOAD FAILED. Trying again")
-        print(r.json())
-        return upload_image(path)
+        # print("UPLOAD FAILED. Trying again")
+        # print(r.json())
+        return None
 
 
 # if __name__ == "__main__":

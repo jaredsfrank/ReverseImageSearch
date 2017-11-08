@@ -32,6 +32,8 @@ class test_frequency():
 					self.count += 1
 				personal_count += 1
 				print("thread {} finsihed search {}".format(thread_num, personal_count))
+			elif prediction is None:
+				print("thread {} failed".format(thread_num))
 		if thread_num == 0:
 			print("finished {} requests".format(self.count))
 
